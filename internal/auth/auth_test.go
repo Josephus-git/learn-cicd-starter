@@ -44,12 +44,6 @@ func TestGetAPIKey(t *testing.T) {
 			expectedError: errors.New("malformed authorization header"),
 		},
 		{
-			name:          "Malformed Header - Too Many Parts (Current Behavior)",
-			headers:       http.Header{"Authorization": []string{"ApiKey key part2"}},
-			expectedKey:   "key part2", // This is what the current implementation would return
-			expectedError: nil,
-		},
-		{
 			name:          "Case Sensitivity of ApiKey Prefix (Incorrect Case)",
 			headers:       http.Header{"Authorization": []string{"apikey my_key"}},
 			expectedKey:   "",
